@@ -37,14 +37,15 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('products/deleted', [Admin_ProductController::class, 'deleted'])->name('products.deleted');
     Route::post('products/restore/{id}', [Admin_ProductController::class, 'restore'])->name('products.restore');
     Route::DELETE('products/force/delete/{id}', [Admin_ProductController::class, 'forceDelete'])->name('products.force.delete');
-    
+
     // Manage Products
-    Route::resource('/admin/products', Admin_ProductController::class); 
+    Route::resource('/admin/products', Admin_ProductController::class);
 
     // Manage Categories
     Route::resource('/admin/categories', Admin_CategoryController::class)
         ->except(['show']);
 
-    // View Orders 
+    // View Orders
+    
     Route::get('/admin/orders', [OrderController::class, 'index'])->name('orders.index');
 });
